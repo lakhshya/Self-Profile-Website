@@ -120,7 +120,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 	background-color: #000;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
 	filter: alpha(opacity=25);
-	opacity: 0.25;
+	opacity: 0.80;
 	display: none;
 	z-index: 300;
 	cursor: crosshair;
