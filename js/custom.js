@@ -8,7 +8,7 @@ if (index > 0) {
 
 $.fn.exists = function () {
     return this.length > 0 ? this : false;
-}
+};
 
 $(document).ready(function () {
 
@@ -166,7 +166,7 @@ $(document).ready(function () {
 
 
         }
-    }
+    };
 
 
 
@@ -220,7 +220,7 @@ $(document).ready(function () {
         };
         var aniOpts = {
             queue: false,
-            duration: 300,
+            duration: 300
             //easing: 'cubic'
         };
         var $car = $('#lab-carousel');
@@ -355,7 +355,7 @@ $(document).ready(function () {
      ++++++++++++++++++++++++++++++++++++++*/
     $(".stellar").stellar({
         verticalOffset: -100,
-        horizontalScrolling: false,
+        horizontalScrolling: false
     });
 
 
