@@ -47,13 +47,14 @@ $(document).ready(function () {
 
 
     /*++++++++++++++++++++++++++++++++++++
-     pages 
+     pages
      ++++++++++++++++++++++++++++++++++++++*/
     var pager = {
         pageContainer: $("div#main"),
         pages: $("div.page"),
         menuItems: $("ul#navigation"),
         overlay: $("div#overlay"),
+        overlayDisableMouse: $("div#overlayDisableMouse"),
         topz: "500",
         init: function () {
 
@@ -108,8 +109,9 @@ $(document).ready(function () {
         },
         forward: function (gotop2, /* optional */ gotop3) {
 
-
-
+            //this.overlayDisableMouse.show();
+            
+            self = this;
             self.hanndelMenu(gotop2);
             self.overlay.show();
             var maxz = self.maxz();
@@ -118,8 +120,10 @@ $(document).ready(function () {
             gotop3.attr('data-pos', 'p3').attr('data-order', maxz + 1);
 
 
-            (new TimelineLite())
-                    .set(gotop2, {left: "100%", zIndex: self.topz})
+            var tll = new TimelineLite({onComplete: function () {
+                    self.overlayDisableMouse.hide();
+                }});
+            tll.set(gotop2, {left: "100%", zIndex: self.topz})
                     .set(gotop3, {zIndex: maxz + 1})
                     .to(gotop2, 0.4, {left: "15%"})
                     .to(gotop3, 0.3, {left: 0, onComplete: function () {
@@ -128,14 +132,16 @@ $(document).ready(function () {
         },
         backward: function (gotop2, gotop1) {
 
-
+            self.overlayDisableMouse.show();
             this.hanndelMenu(gotop2);
             gotop2.exists() || this.overlay.hide();
             gotop2.addClass('currentpage').removeAttr('data-order').attr('data-pos', "p2");
             gotop1.attr('data-pos', 'p1');
 
-            (new TimelineLite())
-                    .set(gotop2, {zIndex: self.topz - 1})
+            var tll = new TimelineLite({onComplete: function () {
+                    self.overlayDisableMouse.hide();
+                }});
+            tll.set(gotop2, {zIndex: self.topz - 1})
                     .to(gotop2, 0.4, {left: "15%"})
                     .to(gotop1, 0.5,
                             {
@@ -221,7 +227,7 @@ $(document).ready(function () {
         var aniOpts = {
             queue: false,
             duration: 300
-            //easing: 'cubic'
+                    //easing: 'cubic'
         };
         var $car = $('#lab-carousel');
         $car.find('img').css('zIndex', 1).css(defaultCss);

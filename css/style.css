@@ -110,6 +110,16 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
     z-index: 0;
     width: 100%;
 }
+#overlayDisableMouse {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    bottom: 0;
+    right: 0px;
+    opacity: 0.0;
+    display: none;
+    z-index: 400;
+}
 
 #overlay {
     position: absolute;
